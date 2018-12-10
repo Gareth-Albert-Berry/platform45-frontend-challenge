@@ -26,12 +26,12 @@ const styles = theme => ({
     width: "380.9px",
   },
   inputRoot: {
-    color: "#b1bfcd",
+    color: "#373d40",
     borderColor: `${"#dddb36"} !important`,
     backgroundColor : `rgba(245, 248, 249, 0.3)`
   },
   inputLabelRoot: {
-    color: "#b1bfcd",
+    color: "#373d40",
   },
   inputRootError: {
     color: "#ff9200",
