@@ -377,6 +377,7 @@ class AppView extends Component {
         date: "",
         mobile: "",
         customerId: "",
+        email: "",
         nameError: "",
         dateError: "",
         emailError: "",
@@ -544,6 +545,16 @@ class AppView extends Component {
                             value={this.state.date}
                             type={"date"}
                             error={this.state.dateError}
+                        />
+                      </Grid>
+                      <Grid item>
+                        <CustomTextField
+                            onClick={this.handleFieldChange('email')}
+                            label={"Email"}
+                            type={"text"}
+                            value={this.state.email}
+                            placeholder={"foo@bar.io"}
+                            error={this.state.emailError}
                         />
                       </Grid>
                       <Grid item>
