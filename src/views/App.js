@@ -85,12 +85,10 @@ const styles = theme => ({
   context: {
     gridColumn: "2/3",
     backgroundColor: "#ff9200",
-    zIndex: -1,
   },
   contextMobile: {
     gridRow: "2/3",
     backgroundColor: "#ff9200",
-    zIndex: -1,
   },
   contextTitle: {
     marginTop: "164px",
