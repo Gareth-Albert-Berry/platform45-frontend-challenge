@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer/Drawer'
 import App from '../views/App.js'
 
 export const DEFAULT = "default"

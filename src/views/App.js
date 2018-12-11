@@ -148,9 +148,21 @@ const styles = theme => ({
     height: "53px",
     borderRadius: "5.3px"
   },
+  cancelButtonMobile: {
+    backgroundColor: "#f5f8f9",
+    width: "280px",
+    height: "53px",
+    borderRadius: "5.3px"
+  },
   submitButton: {
     backgroundColor: "#60e6c5",
     width: "158.7px",
+    height: "53px",
+    borderRadius: "5.3px"
+  },
+  submitButtonMobile: {
+    backgroundColor: "#60e6c5",
+    width: "280px",
     height: "53px",
     borderRadius: "5.3px"
   }
@@ -623,6 +635,27 @@ class AppView extends Component {
                         />
                       </Grid>
                       <Grid item>
+                        {isMobile &&
+                        <Grid container direction={'column'}  justify={'center'}  alignItems={'center'} spacing={24} style={{paddingTop: "39px"}}>
+                          <Grid item>
+                            <Button
+                                className={classes.cancelButtonMobile}
+                                onClick={this.handleCancel}
+                            >
+                              Cancel
+                            </Button>
+                          </Grid>
+                          <Grid item>
+                            <Button
+                                className={classes.submitButtonMobile}
+                                onClick={this.validateFields}
+                            >
+                              Save
+                            </Button>
+                          </Grid>
+                        </Grid>
+                        }
+                        {!isMobile &&
                         <Grid container justify={'flex-end'} spacing={24}
                               style={{paddingTop: "83px"}}>
                           <Grid item>
@@ -642,6 +675,8 @@ class AppView extends Component {
                             </Button>
                           </Grid>
                         </Grid>
+                        }
+
                       </Grid>
                     </Grid>
                   </Grid>
