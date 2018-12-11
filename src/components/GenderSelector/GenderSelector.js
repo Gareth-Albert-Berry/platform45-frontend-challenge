@@ -119,7 +119,9 @@ class GenderSelector extends Component {
                 <Grid item>
                   <div
                       className={classes.genderButton}
-                      onMouseEnter={(e) => e.currentTarget.style.cursor = "pointer"}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.cursor = "pointer"
+                      }}
                       onClick={() => {
                         if (onClick instanceof Function) {
                           onClick('male')
@@ -127,7 +129,15 @@ class GenderSelector extends Component {
                       }}
                   >
                       {!maleSelection &&
-                      <div className={genderButtonWrapper}>
+                      <div
+                          className={genderButtonWrapper}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.border = `1px solid ${"#b3c1ce"}`
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.border = `0px`
+                          }}
+                      >
                         <img className={classes.genderImage} src={male}/>
                       </div>
                       }
@@ -150,7 +160,15 @@ class GenderSelector extends Component {
                       }}
                   >
                     {!femaleSelection &&
-                    <div className={genderButtonWrapper}>
+                    <div
+                        className={genderButtonWrapper}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.border = `1px solid ${"#b3c1ce"}`
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.border = `0px`
+                        }}
+                    >
                       <img className={classes.genderImage} src={female}/>
                     </div>
                     }

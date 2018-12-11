@@ -128,7 +128,15 @@ class MembershipSelector extends Component {
                       }}
                   >
                     {!classicSelection &&
-                    <div className={membershipButtonWrapper}>
+                    <div
+                        className={membershipButtonWrapper}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.border = `1px solid ${"#b3c1ce"}`
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.border = `0px`
+                        }}
+                    >
                       <img className={classes.membershipImage} src={membershipClassic}/>
                     </div>
                     }
@@ -153,7 +161,15 @@ class MembershipSelector extends Component {
                       }}
                   >
                     {!silverSelection &&
-                    <div className={membershipButtonWrapper}>
+                    <div
+                        className={membershipButtonWrapper}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.border = `1px solid ${"#b3c1ce"}`
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.border = `0px`
+                        }}
+                    >
                       <img className={classes.membershipImage} src={membershipGoldSilver}/>
                     </div>
                     }
@@ -176,7 +192,15 @@ class MembershipSelector extends Component {
                       }}
                   >
                     {!goldSelection &&
-                    <div className={membershipButtonWrapper}>
+                    <div
+                        className={membershipButtonWrapper}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.border = `1px solid ${"#b3c1ce"}`
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.border = `0px`
+                        }}
+                    >
                       <img className={classes.membershipImage} src={membershipGoldSilver}/>
                     </div>
                     }
