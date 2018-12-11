@@ -54,7 +54,9 @@ const styles = theme => ({
     marginTop: "161px",
     height: "238px",
     width: "238px",
-    marginBottom: "117px"
+    marginBottom: "117px",
+    overflow: 'hidden',
+    borderRadius: "50%",
   },
   mainTitle: {
     gridRow: "2/3",
@@ -182,7 +184,8 @@ class AppView extends Component {
       mobileError: "",
       customerIdError: "",
       genderSelectionError: "",
-      membershipSelectionError: ""
+      membershipSelectionError: "",
+      cursorOnAvatar: false,
     }
     this.handleFieldDisplay = this.handleFieldDisplay.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
@@ -401,7 +404,7 @@ class AppView extends Component {
 
   render() {
     const { classes } = this.props
-    const { showFields, width } = this.state
+    const { showFields, width, cursorOnAvatar } = this.state
     const isMobile = width <= 500;
     let rootClass
     let mainClass
@@ -409,7 +412,21 @@ class AppView extends Component {
     let contextTitleClass
     let contextTextClass
     let fields
-    let transitions
+    let transitionsFeilds
+    let transitionAvatar = {
+      defaultStyle: {
+        transform: "scale(1)",
+      },
+      enterStyle: {
+        transform: transit("scale(1.2)", 250, "ease-in-out"),
+      },
+      leaveStyle: {
+        transform: transit("scale(1)", 250, "ease-in-out"),
+      },
+      activeStyle: {
+        transform: "scale(1.2)",
+      },
+    }
     if (isMobile) {
       rootClass = classes.rootMobile
       mainClass = classes.mainMobile
@@ -417,7 +434,7 @@ class AppView extends Component {
       contextTitleClass = classes.contextTitleError
       contextTextClass = classes.contextTextError
       fields = classes.fieldsMobile
-      transitions = {
+      transitionsFeilds = {
         defaultStyle: {
           transform: "translate(0, 0)",
         },
@@ -438,7 +455,7 @@ class AppView extends Component {
       contextTitleClass = classes.contextTitle
       contextTextClass = classes.contextText
       fields = classes.fields
-      transitions = {
+      transitionsFeilds = {
         defaultStyle: {
           transform: "translate(0, 0)",
         },
@@ -451,15 +468,32 @@ class AppView extends Component {
         activeStyle: {
           transform: "translate(-583px, 0)",
         },
-      };
+      }
 
     }
     return (
         <div className={classes.wrapper}>
           <div className={rootClass}>
             <div className={mainClass}>
-              <div className={classes.mainAvatar}>
-                <img src={avatar}/>
+              <div
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.cursor = "pointer"
+                    this.setState({
+                      cursorOnAvatar: true,
+                    })
+                  }}
+                  onMouseLeave={(e) => {
+                    this.setState({
+                      cursorOnAvatar: false,
+                    })
+                  }}
+                  className={classes.mainAvatar}
+              >
+                <CSSTransition
+                    {...transitionAvatar} active={cursorOnAvatar}
+                >
+                 <img src={avatar}/>
+                </CSSTransition>
               </div>
               <div className={classes.mainTitle}>
                 Front-end challenge!
@@ -510,7 +544,7 @@ class AppView extends Component {
               </div>
             </div>
             <CSSTransition
-                {...transitions} active={showFields}
+                {...transitionsFeilds} active={showFields}
             >
               <div className={fields}>
                 <Grid
